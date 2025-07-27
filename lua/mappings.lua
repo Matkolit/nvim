@@ -27,6 +27,11 @@ map("i", "<C-k>", "<Up>", { desc = "move up" })
 -- Git mappings
 map("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", { desc = "Git preview hunk" })
 
+-- Window management
+
+map("n", "<leader>,", ":vertical resize +30<CR>", { desc = "Increase wnidow width" })
+map("n", "<leader>.", ":vertical resize -30<CR>", { desc = "Decrease window width" })
+
 map("i", "<M-l>", function()
   vim.fn.feedkeys(vim.fn["copilot#Accept"](), "")
 end, { desc = "Copilot Accept", noremap = true, silent = true })
