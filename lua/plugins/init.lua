@@ -91,4 +91,10 @@ return {
     "tpope/vim-fugitive",
     lazy = false,
   },
+  {
+
+    "folke/zen-mode.nvim",
+    lazy = false,
+    opts = {},
+  },
 }

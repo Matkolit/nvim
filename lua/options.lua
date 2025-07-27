@@ -32,5 +32,5 @@ o.signcolumn = "yes"
 o.smoothscroll = true
 o.updatetime = 50
 
-o.colorcolumn = "80"
+--o.colorcolumn = "80"
 o.foldenable = false
