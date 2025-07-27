@@ -79,4 +79,16 @@ return {
   {
     "Eandrju/cellular-automaton.nvim",
   },
+
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("configs.gitsigns")
+    end,
+  },
+
+  {
+    "tpope/vim-fugitive",
+    lazy = false,
+  },
 }
