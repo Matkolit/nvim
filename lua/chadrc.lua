@@ -11,7 +11,10 @@ M.base46 = {
   hl_override = {
     Comment = { italic = true },
     ["@comment"] = { italic = true },
-    LineNr = { fg = "#B90E63" }, -- Kolor dla numerów linii (np. żółty)
+    LineNr = { fg = "#B90E63" },
+    CursorLineNr = { fg = "#D4AF37", bold = true },
+    NvimTreeWinSeparator = { fg = "#D4AF37" },
+    NvimTreeIndentMarker = { fg = "#D4AF37" },
   },
 }
 
