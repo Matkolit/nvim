@@ -38,13 +38,10 @@ end, { desc = "Copilot Accept", noremap = true, silent = true })
 
 map("n", "<C-s>", function()
   vim.cmd("w")
-  vim.lsp.buf.code_action({
-    context = { only = { "source.fixAll" } },
-    apply = true,
-    filter = function(action)
-      return action.kind == "source.fixAll.eslint"
-    end,
-  })
+  local is_eslint_active = vim.lsp.get_clients({ name = "eslint" })
+  if #is_eslint_active > 0 then
+    vim.cmd("LspEslintFixAll")
+  end
 end, { desc = "eneral save file" })
 
 map("n", "<leader>cfm", function()
