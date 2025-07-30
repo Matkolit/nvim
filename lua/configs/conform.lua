@@ -4,6 +4,7 @@ local options = {
     vue = { "prettier" },
     typescript = { "prettier" },
     html = { "prettier" },
+    json = { "prettier" },
   },
   formatters = {
     prettier = {
