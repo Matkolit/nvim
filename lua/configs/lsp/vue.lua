@@ -4,10 +4,10 @@ local M = {}
 
 M.vtsls = function()
   require("nvchad.configs.lspconfig").defaults()
-  local keymaps = require "configs.lsp.keymaps"
-  local nvlsp = require "nvchad.configs.lspconfig"
+  local keymaps = require("config.keymaps")
+  local nvlsp = require("nvchad.configs.lspconfig")
 
-  local vue_language_server_path = vim.fn.stdpath "data"
+  local vue_language_server_path = vim.fn.stdpath("data")
     .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
 
   local vue_plugin = {
@@ -35,15 +35,15 @@ end
 
 M.vue_ls = function()
   require("nvchad.configs.lspconfig").defaults()
-  local keymaps = require "configs.lsp.keymaps"
-  local nvlsp = require "nvchad.configs.lspconfig"
+  local keymaps = require("plugins.lspconfig.keymaps")
+  local nvlsp = require("nvchad.configs.lspconfig")
 
   return {
     on_attach = keymaps.on_attach,
     capabilities = nvlsp.capabilities,
     on_init = function(client)
       client.handlers["tsserver/request"] = function(_, result, context)
-        local clients = vim.lsp.get_clients { bufnr = context.bufnr, name = "vtsls" }
+        local clients = vim.lsp.get_clients({ bufnr = context.bufnr, name = "vtsls" })
         if #clients == 0 then
           vim.notify("Could not find `vtsls` lsp client, `vue_ls` would not work without it.", vim.log.levels.ERROR)
           return

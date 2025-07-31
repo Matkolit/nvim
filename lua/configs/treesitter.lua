@@ -22,7 +22,8 @@ local options = {
     "typescript",
     "vim",
     "vue",
-    -- "yaml"
+    "tsx",
+    "yaml",
   },
   highlight = {
     highlight_git = true,
