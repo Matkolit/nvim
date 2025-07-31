@@ -25,7 +25,10 @@ map("i", "<C-j>", "<Down>", { desc = "move down" })
 map("i", "<C-k>", "<Up>", { desc = "move up" })
 
 -- Git mappings
-map("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", { desc = "Git preview hunk" })
+map("n", "<leader>gp", ":Gitsigns preview_hunk_inline<CR>", { desc = "Git preview hunk" })
+map("n", "[g", ":Gitsigns prev_hunk<CR>", { desc = "Git previous hunk" })
+map("n", "]g", ":Gitsigns next_hunk<CR>", { desc = "Git next hunk" })
+-- map("n", )
 
 -- Window management
 
