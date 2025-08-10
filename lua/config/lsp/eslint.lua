@@ -1,4 +1,5 @@
 local util = require("lspconfig.util")
+local notify = require("config.notify")
 local lsp = vim.lsp
 
 return {
@@ -140,11 +141,11 @@ return {
       return 4 -- approved
     end,
     ["eslint/probeFailed"] = function()
-      vim.notify("[lspconfig] ESLint probe failed.", vim.log.levels.WARN)
+      notify("[lspconfig] ESLint probe failed.", vim.log.levels.WARN)
       return {}
     end,
     ["eslint/noLibrary"] = function()
-      vim.notify("[lspconfig] Unable to find ESLint library.", vim.log.levels.WARN)
+      notify("[lspconfig] Unable to find ESLint library.", vim.log.levels.WARN)
       return {}
     end,
   },

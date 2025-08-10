@@ -35,8 +35,6 @@ local function navigate_via_keys(bufnr)
   vim.keymap.set("n", "<Right>", righty, opts)
 end
 
-dofile(vim.g.base46_cache .. "nvimtree")
-
 local options = {
   on_attach = navigate_via_keys,
   disable_netrw = true,

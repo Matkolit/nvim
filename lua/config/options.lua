@@ -1,8 +1,5 @@
-require("nvchad.options")
-
 local o = vim.o
--- o.cursorlineopt ='both' -- to enable cursorline!
--- add yours here!
+
 o.nu = true
 o.relativenumber = true
 o.tabstop = 4
@@ -34,4 +31,11 @@ o.updatetime = 50
 
 --o.colorcolumn = "80"
 o.foldenable = false
-o.clipboard = ""
+o.fillchars = "eob: "
+o.cursorline = true
+o.cursorlineopt = "both"
+o = ".,,**"
+
+-- go to previous/next line with h,l,left arrow and right arrow
+-- when cursor reaches end/beginning of line
+vim.opt.whichwrap:append("<>[]hl")

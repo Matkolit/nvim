@@ -5,6 +5,7 @@ local options = {
     typescript = { "prettier" },
     html = { "prettier" },
     json = { "prettier" },
+    css = { "prettier" },
   },
   formatters = {
     prettier = {
@@ -14,7 +15,7 @@ local options = {
 
   format_on_save = {
     timeout_ms = 1000,
-    lsp_fallback = false,
+    lsp_fallback = true,
     bufnr = 0,
   },
 }
