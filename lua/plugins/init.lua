@@ -40,13 +40,10 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      "saghen/blink.cmp",
-      {
-        "folke/lazydev.nvim",
-        opts = {
-          library = {
-            { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-          },
+      "folke/lazydev.nvim",
+      opts = {
+        library = {
+          { path = "${3rd}/luv/library", words = { "vim%.uv" } },
         },
       },
     },
@@ -59,7 +56,10 @@ return {
     "saghen/blink.cmp",
     dependencies = "rafamadriz/friendly-snippets",
     version = "v0.*",
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
     opts = {
+
       keymap = {
         preset = "default",
         ["<Tab>"] = { "select_and_accept" },
@@ -116,15 +116,13 @@ return {
       },
     },
   },
-
-  {
-    "github/copilot.vim",
-    lazy = false,
-    config = function()
-      require("config.copilot")
-    end,
-  },
-
+  -- {
+  --   "github/copilot.vim",
+  --   lazy = false,
+  --   config = function()
+  --     require("config.copilot")
+  --   end,
+  -- },
   {
     "nvim-tree/nvim-tree.lua",
     config = function()
@@ -187,22 +185,54 @@ return {
   },
 
   {
-    "sphamba/smear-cursor.nvim",
-    config = function()
-      require("config.smear-cursor")
-    end,
-  },
-
-  {
     "windwp/nvim-ts-autotag",
     dependencies = "nvim-treesitter/nvim-treesitter",
     event = { "BufReadPre", "BufNewFile" },
   },
 
   {
-    "rcarriga/nvim-notify",
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "folke/noice.nvim",
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
     config = function()
-      require("config.notify")
+      require("noice").setup({
+        lsp = {
+          -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+          override = {
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+            ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+          },
+        },
+      })
+    end,
+  },
+
+  {
+    "rcarriga/nvim-notify",
+    opts = {},
+  },
+
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {},
+  },
+
+  { -- Fancy Start Page
+    "startup-nvim/startup.nvim",
+    enabled = true,
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      require("config.startup")
     end,
   },
 }

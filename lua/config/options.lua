@@ -1,4 +1,5 @@
 local o = vim.o
+local opt = vim.opt
 
 o.nu = true
 o.relativenumber = true
@@ -38,4 +39,4 @@ o = ".,,**"
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
-vim.opt.whichwrap:append("<>[]hl")
+opt.whichwrap:append("<>[]hl")

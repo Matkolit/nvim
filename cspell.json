@@ -54,7 +54,9 @@
         "tpope",
         "nvimtree",
         "rcarriga",
-        "windwp"
+        "windwp",
+        "noice",
+        "Tanjim"
     ],
     "allowCompoundWords": true,
     "caseSensitive": true,
