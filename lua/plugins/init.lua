@@ -7,6 +7,17 @@ return {
   },
 
   {
+    "mason-org/mason-lspconfig.nvim",
+    dependencies = {
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig",
+    },
+    config = function()
+      require("config.mason-lspconfig")
+    end,
+  },
+
+  {
     "nvim-treesitter/nvim-treesitter",
     event = { "BufReadPre", "BufNewFile" },
     config = function()

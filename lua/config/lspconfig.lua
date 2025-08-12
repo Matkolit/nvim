@@ -8,7 +8,6 @@ local default_servers_config = {
   "tailwindcss",
   "emmet_ls",
   "html",
-  "eslint",
   "jsonls",
   "cspell_ls",
 }

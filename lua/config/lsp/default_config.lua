@@ -1,5 +1,18 @@
 local M = {}
 
+M.servers_to_install = {
+  "lua_ls",
+  "cssls",
+  "tailwindcss",
+  "emmet_ls",
+  "html",
+  "eslint",
+  "jsonls",
+  "cspell_ls",
+  "vtsls",
+  "vue_ls",
+}
+
 function M.on_attach(client, bufnr)
   local map = function(mode, lhs, rhs, opts)
     opts = vim.tbl_extend("force", { noremap = true, silent = true, buffer = bufnr }, opts or {})
