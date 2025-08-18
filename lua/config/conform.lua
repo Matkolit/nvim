@@ -1,14 +1,15 @@
 local options = {
   formatters_by_ft = {
     lua = { "stylua" },
-    vue = { "prettier" },
-    typescript = { "prettier" },
-    html = { "prettier" },
-    json = { "prettier" },
-    css = { "prettier" },
+    vue = { "prettierd" },
+    typescript = { "prettierd" },
+    html = { "prettierd" },
+    json = { "prettierd" },
+    css = { "prettierd" },
+    typescriptreact = { "prettierd" },
   },
   formatters = {
-    prettier = {
+    prettierd = {
       require_cwd = true,
     },
   },
@@ -16,7 +17,6 @@ local options = {
   format_on_save = {
     timeout_ms = 1000,
     lsp_fallback = true,
-    bufnr = 0,
   },
 }
 
