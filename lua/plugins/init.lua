@@ -26,7 +26,7 @@ return {
   },
 
   {
-    "scottmckendry/cyberdream.nvim",
+    "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
     config = function()
@@ -38,6 +38,18 @@ return {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.8",
     dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("telescope").setup({
+        defaults = {
+          wrap_results = true,
+        },
+        pickers = {
+          oldfiles = {
+            initial_mode = "normal",
+          },
+        },
+      })
+    end,
   },
 
   {
@@ -45,6 +57,22 @@ return {
     event = "BufWritePre",
     config = function()
       require("config.conform")
+    end,
+  },
+
+  {
+    "mfussenegger/nvim-lint",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      local lint = require("lint")
+
+      lint.linters_by_ft = {
+        javascript = { "eslint" },
+        typescript = { "eslint" },
+        javascriptreact = { "eslint" },
+        typescriptreact = { "eslint" },
+        vue = { "eslint" },
+      }
     end,
   },
 

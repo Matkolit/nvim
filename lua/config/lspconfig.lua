@@ -19,10 +19,8 @@ for _, lsp in pairs(default_servers_config) do
     capabilities = capabilities,
   })
 end
-vim.lsp.enable(default_servers_config)
 
-local eslint_config = require("config.lsp.eslint")
-vim.lsp.config("eslint", eslint_config)
+vim.lsp.enable(default_servers_config)
 
 vim.lsp.config("cspell_ls", {
   cmd = { "cspell-lsp", "--stdio", "--config", vim.fn.stdpath("config") .. "/cspell.json" },
@@ -35,3 +33,19 @@ vim.lsp.config("vtsls", vtsls_config)
 vim.lsp.config("vue_ls", vue_ls_config)
 
 vim.lsp.enable({ "vtsls", "vue_ls" })
+
+local base_on_attach = vim.lsp.config.eslint.on_attach
+
+vim.lsp.config("eslint", {
+  on_attach = function(client, bufnr)
+    if not base_on_attach then
+      return
+    end
+
+    base_on_attach(client, bufnr)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      command = "LspEslintFixAll",
+    })
+  end,
+})

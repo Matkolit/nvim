@@ -45,13 +45,7 @@ map("i", "<M-l>", function()
 end, { desc = "Copilot Accept", noremap = true, silent = true })
 
 -- Linters quick actio
-map({ "n", "i" }, "<C-s>", function()
-  vim.cmd("w")
-  local is_eslint_active = vim.lsp.get_clients({ name = "eslint" })
-  if #is_eslint_active > 0 then
-    vim.cmd("LspEslintFixAll")
-  end
-end, { desc = "general save file" })
+map({ "n", "i" }, "<C-s>", ":w<CR>", { desc = "general save file" })
 
 map("n", "<leader>cfm", function()
   require("cellular-automaton").start_animation("make_it_rain")

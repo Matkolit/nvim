@@ -6,14 +6,14 @@ M.servers_to_install = {
   "tailwindcss",
   "emmet_ls",
   "html",
-  "eslint",
   "jsonls",
   "cspell_ls",
   "vtsls",
   "vue_ls",
+  "eslint",
 }
 
-function M.on_attach(client, bufnr)
+function M.on_attach(_, bufnr)
   local map = function(mode, lhs, rhs, opts)
     opts = vim.tbl_extend("force", { noremap = true, silent = true, buffer = bufnr }, opts or {})
     vim.keymap.set(mode, lhs, rhs, opts)
@@ -24,11 +24,15 @@ function M.on_attach(client, bufnr)
   map("n", "gI", vim.lsp.buf.implementation, { desc = "Goto Implementation" })
   map("n", "gy", vim.lsp.buf.type_definition, { desc = "Goto Type Definition" })
   map("n", "gD", vim.lsp.buf.declaration, { desc = "Goto Declaration" })
+  map("n", "gvd", function()
+    vim.cmd("vsplit")
+    vim.lsp.buf.definition({ reuse_win = true })
+  end)
 
   -- Documentation and help
   map("n", "K", vim.lsp.buf.hover, { desc = "Hover" })
   map("n", "gK", vim.lsp.buf.signature_help, { desc = "Signature Help" })
-  map("i", "<C-Space>", vim.lsp.buf.signature_help, { desc = "Signature Help (Insert Mode)" })
+  map("i", "<C-Space>", vim.lsp.buf.signature_help, { desc = "Signature Help (Insert Mode)", noremap = true })
 
   -- This is going to get me canceled
   map({ "n", "v", "i" }, "<C-z>", "<ESC>")
