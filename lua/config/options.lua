@@ -1,4 +1,5 @@
 local o = vim.o
+local g = vim.g
 local opt = vim.opt
 
 o.nu = true
@@ -29,14 +30,20 @@ o.signcolumn = "yes"
 
 o.smoothscroll = true
 o.updatetime = 50
+o.splitbelow = true
+o.splitright = true
 
 --o.colorcolumn = "80"
 o.foldenable = false
 o.fillchars = "eob: "
 o.cursorline = true
 o.cursorlineopt = "both"
-o = ".,,**"
-
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append("<>[]hl")
+
+-- disable some default providers
+g.loaded_node_provider = 0
+g.loaded_python3_provider = 0
+g.loaded_perl_provider = 0
+g.loaded_ruby_provider = 0

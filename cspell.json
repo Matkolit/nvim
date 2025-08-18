@@ -56,7 +56,9 @@
         "rcarriga",
         "windwp",
         "noice",
-        "Tanjim"
+        "Tanjim",
+        "Rsbuild",
+        "rsbuild"
     ],
     "allowCompoundWords": true,
     "caseSensitive": true,
