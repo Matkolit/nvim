@@ -26,8 +26,7 @@ return {
   },
 
   {
-    "folke/tokyonight.nvim",
-    lazy = false,
+    "ellisonleao/gruvbox.nvim",
     priority = 1000,
     config = function()
       require("config.theme")
@@ -65,7 +64,6 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     config = function()
       local lint = require("lint")
-
       lint.linters_by_ft = {
         javascript = { "eslint" },
         typescript = { "eslint" },
@@ -73,6 +71,27 @@ return {
         typescriptreact = { "eslint" },
         vue = { "eslint" },
       }
+    end,
+  },
+
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
+    config = function()
+      require("render-markdown").setup({
+        completions = { blink = { enabled = true } },
+      })
+    end,
+  },
+
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    dependencies = {
+      { "nvim-lua/plenary.nvim", branch = "master" },
+    },
+    build = "make tiktoken",
+    config = function()
+      require("config.copilot-chat")
     end,
   },
 
@@ -155,13 +174,23 @@ return {
       },
     },
   },
-  -- {
-  --   "github/copilot.vim",
-  --   lazy = false,
-  --   config = function()
-  --     require("config.copilot")
-  --   end,
-  -- },
+  {
+    "github/copilot.vim",
+    lazy = false,
+    config = function()
+      require("config.copilot")
+    end,
+  },
+  {
+    "kylechui/nvim-surround",
+    version = "^3.0.0", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end,
+  },
   {
     "nvim-tree/nvim-tree.lua",
     config = function()
@@ -273,5 +302,22 @@ return {
     config = function()
       require("config.startup")
     end,
+  },
+  {
+    "romgrk/barbar.nvim",
+    dependencies = {
+      "lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
+      "nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
+    },
+    init = function()
+      vim.g.barbar_auto_setup = false
+    end,
+    opts = {
+      -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
+      -- animation = true,
+      -- insert_at_start = true,
+      -- …etc.
+    },
+    version = "^1.0.0", -- optional: only update when a new 1.x version is released
   },
 }
